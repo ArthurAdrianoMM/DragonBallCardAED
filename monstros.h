@@ -42,19 +42,51 @@ void Ataque(Monstro *monstro){
 }
 
 //funcao para escolher um mosntro dentro de um banco de dados
-
 Monstro BancoDeDados(int ID) {
 	Monstro monstro;
-    switch (ID) {
+     switch (ID) {
         case 1:
-            monstro = CriarMonstro("Demonio", 100); 
-            CriarAcao(&monstro, "Arranhao", 10); 
-            CriarAcao(&monstro, "Mordida", 20); 
+            monstro = CriarMonstro("Saibaman", 20); 
+            CriarAcao(&monstro, "golpe", 3); 
+            CriarAcao(&monstro, "Rajada de ki", 7); 
+            CriarAcao(&monstro, "Auto-explosao", 20);
 			break;
         case 2:
-            monstro = CriarMonstro("ZezinhoDaMassa", 100); 
-            CriarAcao(&monstro, "Porrada", 10); 
-            CriarAcao(&monstro, "Tiro", 20);
+            monstro = CriarMonstro("Nappa", 60); 
+            CriarAcao(&monstro, "Golpe", 7); 
+            CriarAcao(&monstro, "Bafo de Ki", 10);
+            CriarAcao(&monstro, "Explosao", 15);
+            break;
+        case 3:
+            monstro = CriarMonstro("Zarbon", 100); 
+            CriarAcao(&monstro, "Golpe", 7); 
+            CriarAcao(&monstro, "Disparo elegante", 15);
+            CriarAcao(&monstro, "Rajada de chute", 10);
+            break;
+        case 4:
+            monstro = CriarMonstro("Freza", 100); 
+            CriarAcao(&monstro, "Golpe", 7); 
+            CriarAcao(&monstro, "Raio da Morte", 15);
+            CriarAcao(&monstro, "Supernova", 30);
+            break;
+        case 5:
+            monstro = CriarMonstro("Androide 16", 100); 
+            CriarAcao(&monstro, "Golpe", 7); 
+            CriarAcao(&monstro, "Soco voador", 15);
+            CriarAcao(&monstro, "Hell's Flash ", 30);
+            break;
+        case 6:
+            monstro = CriarMonstro("Cell Perfeito", 120); 
+            CriarAcao(&monstro, "Golpe", 9); 
+            CriarAcao(&monstro, "Kamehameha Perfeito", 20);
+            CriarAcao(&monstro, "Makankosappo", 12);
+            CriarAcao(&monstro, "Kienzan", 10);
+            break;
+        case 7:
+            monstro = CriarMonstro("Majin boo", 100); 
+            CriarAcao(&monstro, "Golpe", 7); 
+            CriarAcao(&monstro, "Chuva de energia", 25);
+            CriarAcao(&monstro, "Bola da morte", 30);
             break;
         default:
             cout << "Opção inválida" << endl;
