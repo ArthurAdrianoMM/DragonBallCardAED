@@ -1,4 +1,4 @@
- #ifndef MAPA
+#ifndef MAPA
 #define MAPA
 
 #include <stdio.h>
@@ -7,7 +7,6 @@
 
 //media de 12 inimigos antes do boss/ 0=descanso, 1=loja, 2 até 21=inimigos(20 possiveis inimigos), 30=boss
 //boa sorte
-
 
 typedef int tp_item; //o nodo armazena um numero que identifica se é um descanso, loja ou inimigo, e ser for inimigo, qual
 
@@ -42,7 +41,6 @@ tp_nodo* cria_nodo(tp_nodo *atu)
         return novo_no;
     }
     
-    
     if((rand() % 4) == 0)// isso da 25% de chance de haver um caminho alternativo nesse no
     {
         novo_no->cam2=NULL;
@@ -61,7 +59,7 @@ tp_nodo* cria_nodo(tp_nodo *atu)
     }
     else
     {
-        novo_no->fase=(rand() % 20) + 2;//o 20 é a quantidade de inimigos possiveis a serem escolhidos, o 2 é para evitar comflito com loja ou descanso
+        novo_no->fase=(rand() % 20) + 2;//o 20 é a quantidade de inimigos possiveis a serem escolhidos, o 2 é para evitar conflito com loja ou descanso
         return novo_no;
     }
 }
@@ -115,7 +113,7 @@ tp_item navega_mapa(tp_nodo *mapa)
     if(mapa->cam2==mapa->cam2->cam2)//só há um caminho a frente
     {
         mapa->cam2=mapa->cam2->cam1;//move o jogador
-        printf("só há um caminho a frente\n");
+        printf("so ha um caminho a frente\n");
         return mapa->cam2->fase;
     }
     else//há 2 caminhos a frente
@@ -123,7 +121,41 @@ tp_item navega_mapa(tp_nodo *mapa)
         int esc1, esc2, decisao;
         esc1=mapa->cam2->cam1->fase;
         esc2=mapa->cam2->cam2->fase;
-        printf("há dois caminhos a frente, um leva para um %d, e o outro para um %d. voce toma o caminho 1 ou 2?\n", esc1, esc2);//isso é pra ser temporario, depois incorpa melhor no teatro
+        
+        printf("ha dois caminhos a frente, um leva para um ");//isso é pra ser temporario, depois incorpa melhor no teatro
+
+        switch (esc1)
+    {
+    case 0:
+    printf("descanso, e o outro para um ");
+        break;
+    case 1:
+    printf("loja, e o outro para um ");
+        break;
+    case 30:
+    printf("Boss, e o outro para um ");
+        break;
+    default:
+    printf("inimigo, e o outro para um ");
+        break;
+    }
+
+    switch (esc2)
+    {
+    case 0:
+    printf("descanso. Voce toma o caminho 1 ou 2?\n");
+        break;
+    case 1:
+    printf("loja. Voce toma o caminho 1 ou 2?\n");
+        break;
+    case 30:
+    printf("Boss. Voce toma o caminho 1 ou 2?\n");
+        break;
+    default:
+    printf("inimigo. Voce toma o caminho 1 ou 2?\n");
+        break;
+    }
+        
         scanf("%d", &decisao);
         if(decisao==1)
         {
@@ -135,14 +167,15 @@ tp_item navega_mapa(tp_nodo *mapa)
             mapa->cam2=mapa->cam2->cam2;
             return mapa->cam2->fase;
         }
-    }
+  }
+}
+
+void verificaFase(int fase){
+    if(fase>1 && fase<30) printf("Inimigo\n");
+        if(fase==0) printf("Descanso\n");
+        if(fase==1) printf("Loja\n");
+        if(fase==30) printf("Boss\n");
 }
 
 
 #endif
-
-/*
-int main()
-{
-    
-}*/

@@ -1,87 +1,187 @@
-#ifndef MAO_H
-#define MAO_H
+#ifndef LISTASE_H
+#define LISTASE_H
 #include "deck.h"
-#define MAX_MAO 10
 
-// struct da mao
-typedef struct {
-    Carta cartas[MAX_MAO];
-    int tamanho;
+typedef struct no_mao {
+    Carta info;
+    struct no_mao *prox;
 } Mao;
 
-//cria uma mao sem nada
-Mao criar_mao() {
-    Mao mao;
-    mao.tamanho = 0;
-    return mao;
+// Inicialização da lista
+Mao *inicializa_mao() {
+    return NULL;
+}
+
+int mao_vazia(Mao *lista) {
+    if (lista == NULL)
+        return 1;
+    return 0;
+}
+
+Mao *aloc_mao() {
+    Mao *novo_no;
+    novo_no = (Mao *)malloc(sizeof(Mao));
+    return novo_no;
+}
+
+
+int mao_insere_no_fim(Mao **lista, Carta e) {
+    Mao *novo_no, *atu;
+    novo_no = aloc_mao();
+    if (novo_no == NULL)
+        return 0;
+    novo_no->info = e;
+    novo_no->prox = NULL;
+    if (mao_vazia(*lista)) {
+        *lista = novo_no;
+    } else {
+        atu = *lista;
+        while (atu->prox != NULL) {
+            atu = atu->prox;
+        }
+        atu->prox = novo_no;
+    }
+    return 1;
+}
+
+void mostra_mao(Mao *lista) {
+    Mao *atu;
+    atu = lista;
+    printf("----------------------\n");
+    while (atu != NULL) { 
+        exibirCarta(&atu->info);
+        printf("----------------------\n");
+        atu = atu->prox;
+    }
+}
+
+int remove_mao(Mao **lista, Carta e) {
+    Mao *ant, *atu;
+    atu = *lista;
+    ant = NULL;
+    while ((atu != NULL) && (memcmp(&(atu->info), &e, sizeof(Carta)) != 0)) {
+        ant = atu;
+        atu = atu->prox;
+    }
+    if (atu == NULL)
+        return 0;
+    if (ant == NULL) {
+        *lista = atu->prox;
+    } else {
+        ant->prox = atu->prox;
+    }
+    free(atu);
+    atu = NULL;
+    return 1;
+}
+
+Mao *busca_mao(Mao *lista, Carta e) {
+    Mao *atu;
+    atu = lista;
+    while ((atu != NULL) && (memcmp(&(atu->info), &e, sizeof(Carta)) != 0)) {
+        atu = atu->prox;
+    }
+    if (atu == NULL)
+        return NULL;
+    return atu;
+}
+
+int tamanho_mao(Mao *lista) {
+    int cont = 0;
+    Mao *atu;
+    atu = lista;
+    while (atu != NULL) {
+        cont++;
+        atu = atu->prox;
+    }
+    return cont;
+}
+
+void destroi_mao(Mao **lista) {
+    Mao *atu;
+    atu = *lista;
+    while (atu != NULL) {
+        *lista = atu->prox;
+        free(atu);
+        atu = *lista;
+    }
+    *lista = NULL;
+}
+
+// Remoção de Elemento na Posição
+int remove_elemento_posicao(Mao **lista, int posicao) {
+    if (mao_vazia(*lista) || posicao < 0) {
+        return 0; // Não é possível remover de lista vazia ou posição inválida.
+    }
+
+    if (posicao == 0) {
+        Mao *temp = *lista;
+        *lista = (*lista)->prox;
+        free(temp);
+        return 1; // Remoção bem-sucedida.
+    }
+
+    Mao *anterior = NULL;
+    Mao *atu = *lista;
+    int contador = 0;
+
+    while (atu != NULL && contador < posicao) {
+        anterior = atu;
+        atu = atu->prox;
+        contador++;
+    }
+
+    if (atu == NULL) {
+        return 0; // Posição inválida.
+    }
+
+    anterior->prox = atu->prox;
+    free(atu);
+
+    return 1; // Remoção bem-sucedida.
+}
+
+void mostrar_mao_posicao(Mao *lista, int posicao) {
+
+    // atu aponta pra carta na posição q passo como parametro
+    int contador = 0;
+    Mao *atu = lista;
+    while (atu != NULL && contador < posicao) {
+        atu = atu->prox;
+        contador++;
+    }
+
+    if (atu != NULL) {
+        printf("Carta na posição %d: ", posicao + 1);
+        exibirCarta(&atu->info);
+    } else {
+        printf("Posição inválida.\n");
+    }
+}
+
+// basicamente e so um scanf grande
+int escolher_carta(Mao *lista) {
+    int tamanho=tamanho_mao(lista), escolha;
+    printf("Escolha uma carta para jogar ( 1 - %d) 0 para encerrar turno : ", tamanho); 
+
+    scanf("%d", &escolha);
+    if (escolha >= 0 && escolha <= tamanho) {
+        return escolha - 1; // Retorna o índice da carta escolhida
+    } else {
+        printf("Escolha invalida. Tente novamente.\n");
+        return -1; // Retorna -1 para indicar uma escolha inválida
+    }
 }
 
 // Função para adicionar uma carta à mão do jogador
 void adicionar_carta(Mao *mao, tp_pilha *deck, int Qnt) { // Mao, o deck, e a quantidade de cartas a cavar
     Carta Carta;
-    if(mao->tamanho < MAX_MAO) {
-        for(int i=0; i<Qnt; i++){
-            pop(deck, &Carta); // retira a carta do topo do deck 
-            mao->cartas[mao->tamanho] = Carta; // acessa a struct mao, aponta pra array cartas e joga la
-            mao->tamanho++;  // "aumenta" o tamanho da array, para percorrer a array
-        }              
-    } else {
-        printf("Mao cheia\n");
-    }
+    for(int i=0; i<Qnt; i++){
+        pop(deck, &Carta); // retira a carta do topo do deck 
+        mao_insere_no_fim(&mao, Carta); // joga no final da mao
+    }              
 }
 
-// Função para adicionar uma carta ao descarte
-void adicionar_ao_descarte(Descarte *descarte, Carta carta) { 
-    if (descarte->topo < MAX- 1) {
-        descarte->topo++;
-        descarte->cartas[descarte->topo] = carta;
-    } else {
-        printf("O descarte está cheio. O deck será embaralhado.\n");
-        // Implemente a lógica para embaralhar o descarte e colocá-lo de volta no deck aqui
-        // Neste exemplo, apenas esvaziamos o descarte.
-        descarte->topo = -1;
-    }
-}
-
-// Função para exibir a mão do jogador
-void mostrar_mao(Mao mao) { 
-    printf("Sua mão:\n");
-    for (int i = 0; i < mao.tamanho; i++) {
-        printf("%d. %s\n", i + 1, mao.cartas[i].nome);
-    }
-}
-
-// basicamente e so um scanf grande
-int escolher_carta(Mao *mao) {
-    int escolha;
-    printf("Escolha uma carta para jogar (1-10): ");
-    scanf("%d", &escolha);
-    if (escolha >= 1 && escolha <= mao->tamanho) {
-        return escolha - 1; // Retorna o índice da carta escolhida
-    } else {
-        printf("Escolha inválida. Tente novamente.\n");
-        return -1; // Retorna -1 para indicar uma escolha inválida
-    }
-}
-
-
-// Atualize a função jogar_carta para adicionar a carta ao descarte
-void jogar_carta(Mao *mao, tp_pilha *deck, Descarte *descarte) {
-    int escolha = escolher_carta(mao);
-    if (escolha >= 0) {
-        printf("Você jogou: %s\n", mao->cartas[escolha].nome);
-
-        // Adicione a carta ao descarte em vez de devolvê-la ao deck
-        adicionar_ao_descarte(descarte, mao->cartas[escolha]);
-
-        // Remova a carta da mão do jogador
-        for (int i = escolha; i < mao->tamanho - 1; i++) {
-            mao->cartas[i] = mao->cartas[i + 1];
-        }
-        mao->tamanho--;
-    }
-}
 
 
 #endif
-

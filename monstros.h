@@ -37,10 +37,6 @@ void DadosMonstro(Monstro *monstro){
 	imprime_fila(monstro->acoes);
 }
 
-void Ataque(Monstro *monstro){
-	
-}
-
 //funcao para escolher um mosntro dentro de um banco de dados
 Monstro BancoDeDados(int ID) {
 	Monstro monstro;
@@ -94,7 +90,6 @@ Monstro BancoDeDados(int ID) {
     }
 	return monstro;
 }
-
 
 #endif
 
