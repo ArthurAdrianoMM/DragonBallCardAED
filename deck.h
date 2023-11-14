@@ -5,7 +5,7 @@
 void criar_deck(tp_pilha *deck){
 
     Carta soco,chute, barreira, Kienzan, kamehameha, explosao, barreiraex, finalflash;
-batata
+
     soco=criarcarta("Soco",4,0,1,0,0);
     push(deck, soco);
     push(deck, soco);
