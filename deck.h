@@ -1,6 +1,6 @@
 #ifndef DECK_H
 #define DECK_H
-#include "pilhastruct.h"
+#include "filastruct.h"
 
 void criar_deck(tp_pilha *deck){
 

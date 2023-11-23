@@ -1,6 +1,6 @@
 #ifndef LISTASE_H
 #define LISTASE_H
-#include "deck.h"
+#include "monstros.h"
 
 typedef struct no_mao {
     Carta info;
@@ -181,6 +181,34 @@ void adicionar_carta(Mao *mao, tp_pilha *deck, int Qnt) { // Mao, o deck, e a qu
         mao_insere_no_fim(&mao, Carta); // joga no final da mao
     }              
 }
+
+void joga_carta(Mao **lista, int posicao, tp_pilha *descarte, Monstro *monstro, personagem *personagem) {
+    // atu aponta pra carta na posição q passo como parametro
+    // para acessar a carta usa-se atu->info
+    int contador = 0;
+    Mao *atu ;
+    atu = *lista;
+    while (atu != NULL && contador < posicao) { // loop para igualar contador a posicao, assim fazendo atu apontar pra posição que quer
+        atu = atu->prox;
+        contador++;
+    }
+
+    if (atu != NULL) {
+        Carta carta = atu->info; // faz uma "copia" da carta
+        if(carta.energia<=personagem->ki){
+            printf("%s \n", carta.nome);
+            monstro->vida-=carta.ataque;
+            personagem->def+=carta.defesa;
+            personagem->ki-=carta.energia;
+            push(descarte,carta); // joga a carta no descarte
+            remove_elemento_posicao(lista, contador); // tira a carta da mao
+        }else{
+            printf("----- KI INSUFICIENTE ------\n");
+            Sleep(2000);
+        }
+    }
+}
+
 
 
 

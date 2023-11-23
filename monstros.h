@@ -1,6 +1,6 @@
 #ifndef MONSTROS_H
 #define MONSTROS_H
-#include "filastruct.h"
+#include "deck.h"
 #define TAM_NOME 50
 
 // Defina uma estrutura para representar um monstro

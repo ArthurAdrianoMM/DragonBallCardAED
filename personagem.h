@@ -6,6 +6,7 @@
 #include<stdlib.h>
 #include<locale.h>
 #include<string.h>
+#include "mapa.h"
 using namespace std;
 
 typedef struct{
