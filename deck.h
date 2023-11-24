@@ -42,8 +42,8 @@ void criar_deck(tp_pilha *deck){
     //_sleep(5000);
     }
 
-void cartas_especiais(int *nivel, int *numero, tp_pilha *deck){
-  if(*nivel==3){
+void cartas_especiais(int numero, tp_pilha *deck){
+  
     Carta regeneracao, supersayajin, Tiro, Controlada, Gigante;
 
     Controlada=criarcarta("Explosao de Energia Controlada", 20,0,1,0,0);
@@ -53,26 +53,31 @@ void cartas_especiais(int *nivel, int *numero, tp_pilha *deck){
     Gigante=criarcarta("Gigantificacao",0,0,0,0,3);
     
 
-    switch (*numero)
+    switch (numero)
     {
     case 1:
-    push(deck, Controlada);
+    push(deck, supersayajin);
+    exibirCarta(&supersayajin);
       break;
 
     case 2:
     push(deck, Tiro);
+    exibirCarta(&Tiro);
       break;
 
     case 3:
-    push(deck, Gigante);
+    push(deck, Controlada);
+    exibirCarta(&Controlada);
       break;
 
     case 4:
-      push(deck, supersayajin);
+      push(deck, regeneracao);
+      exibirCarta(&regeneracao);
       break;
 
     case 5:
-      push(deck, regeneracao);
+      push(deck, Gigante);
+      exibirCarta(&Gigante);
       break;
     
     default:
@@ -81,12 +86,5 @@ void cartas_especiais(int *nivel, int *numero, tp_pilha *deck){
     }
 
   }
-  else{
-    printf("nao e possivel criar outro deck o seu e:");
-    imprime_pilha(*deck);
-  }
-}
-
-
 
 #endif
