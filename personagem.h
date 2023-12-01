@@ -82,7 +82,7 @@ void definir_personagem(personagem *j){
             j->ki_maximo=4;
             j->vida=80;
             j->gold=80;
-            j->n=4;
+            j->n=1;
         break;
         case 2:
             j->ki_maximo=3;
@@ -94,7 +94,7 @@ void definir_personagem(personagem *j){
             j->ki_maximo=3;
             j->gold=80;
             j->vida=80;
-            j->n= 1;
+            j->n= 3;
         break;
         case 4:
             j->ki_maximo=3;
@@ -106,7 +106,7 @@ void definir_personagem(personagem *j){
             j->ki_maximo=3;
             j->vida=130;
             j->gold=100;
-            j->n= 3;
+            j->n= 5;
             break;
     }
     system("cls");
