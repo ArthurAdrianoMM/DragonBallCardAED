@@ -92,6 +92,12 @@ Monstro BancoDeDados(int ID) {
             CriarAcao(&monstro, "Golpe", 4); 
             CriarAcao(&monstro, "Estacas da morte", 10);
             break;
+	case 10:
+            monstro = CriarMonstro("Cell.jr", 100);
+            CriarAcao(&monstro, "Golpe", 4);
+            CriarAcao(&monstro, " Kiko-ho", 10);
+            CriarAcao(&monstro, "Roga Fufu Ken", 6);
+            break;
         default:
             cout << "Opção inválida" << endl;
             break;
@@ -115,6 +121,7 @@ Monstro BancoBoss(int id){
         Boss = CriarMonstro("Freza", 150); 
             CriarAcao(&Boss, "Golpe", 7); 
             CriarAcao(&Boss, "Enforcar com cauda", 8);
+	    CriarAcao(&Boss, "Corte psiquico", 12);
             CriarAcao(&Boss, "Raio da Morte", 15);
             CriarAcao(&Boss, "Supernova", 25);
             break;
