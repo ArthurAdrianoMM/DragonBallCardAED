@@ -133,6 +133,7 @@ Monstro BancoBoss(int id){
             CriarAcao(&Boss, "Bola de Choque", 18);
             CriarAcao(&Boss, "Chuva de energia", 25);
             CriarAcao(&Boss, "Explosão Planetária", 30);
+	    break;
     default:
     printf("Esse monstro nao existe!!\n");
         break;
