@@ -34,12 +34,8 @@ void criar_deck(tp_pilha *deck){
     push(deck, barreiraex);
     push(deck, barreiraex);
 
-    finalflash=criarcarta("Resplandor final", 4,4,1,0,0);
+    finalflash=criarcarta("Resplandor final", 15,0,1,0,0);
     push(deck, finalflash);
-
-  //printf("Suas cartas sao:\n");
-    //imprime_pilha(*deck);
-    //_sleep(5000);
     }
 
 void cartas_especiais(int numero, tp_pilha *deck){
