@@ -66,7 +66,7 @@ int main() {
 
     registra(&arq, cont, nome_arq);//salva o nivel alcançado pelo jogador
 
-    Monstro inimigo = BancoDeDados(1); // na biblioteca monstro há varios monstros, para lutar contra outro basta mudar o ID
+    Monstro inimigo = BancoDeDados((rand() % 10) + 1); // na biblioteca monstro há varios monstros, para lutar contra outro basta mudar o ID
 
     int escolha, turno, i=0 ; int fase=-1; // i e apenas um contador para as acoes do monstro
 
