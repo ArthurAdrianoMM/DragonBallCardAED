@@ -1,4 +1,4 @@
-#include "mao.h"
+#include "loja.h"
 
 void descanso(tp_pilha *deckaux, int *vida, int nm){
     int escolha, confirm;
@@ -44,7 +44,6 @@ int main() {
     personagem jogador;
     definir_personagem(&jogador);
     DadosPersonagem(&jogador);
-    printf("pressione qualquer botao para continuar ");
     system("pause");
     system("cls");
 
@@ -66,7 +65,7 @@ int main() {
 
     registra(&arq, cont, nome_arq);//salva o nivel alcançado pelo jogador
 
-    Monstro inimigo = BancoDeDados((rand() % 10) + 1); // na biblioteca monstro há varios monstros, para lutar contra outro basta mudar o ID
+    Monstro inimigo = BancoBoss((rand() % 3) + 1); // na biblioteca monstro há varios monstros, para lutar contra outro basta mudar o ID
 
     int escolha, turno, i=0 ; int fase=-1; // i e apenas um contador para as acoes do monstro
 
@@ -129,7 +128,7 @@ default:
 
     system("cls"); // se estiver no windows
 
-    // versao precaria do mapa
+    
     if(jogador.vida<0){
         printf("muito ruim, perdeu \n");
         system("pause");

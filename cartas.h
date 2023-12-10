@@ -10,14 +10,15 @@ int ataque=0, defesa=0, energia=0, cura=0, buff=0;
 
 // Função para criar uma carta
 Carta criarcarta(const char *nome, int ataque, int defesa, int energia, int cura, int buff) {
-    Carta carta;
-    strcpy(carta.nome, nome);
+Carta carta;
+strcpy(carta.nome, nome);
 
-    carta.ataque = ataque;
-    carta.defesa = defesa;
-    carta.energia = energia;
-    carta.cura= cura;
-    carta.buff=buff;
+carta.ataque = ataque;
+carta.defesa = defesa;
+carta.energia = energia;
+carta.cura= cura;
+carta.buff=buff;
+
 return carta;
 }
 
@@ -37,5 +38,6 @@ void exibir_mao(Carta mao[5]) {
         exibirCarta(&mao[i]);  
     }
 }
+
 
 #endif

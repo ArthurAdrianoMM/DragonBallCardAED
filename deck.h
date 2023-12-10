@@ -2,6 +2,9 @@
 #define DECK_H
 #include "filastruct.h"
 
+
+
+
 void criar_deck(tp_pilha *deck){
 
     Carta soco,chute, barreira, Kienzan, kamehameha, explosao, barreiraex, finalflash;
@@ -10,6 +13,7 @@ void criar_deck(tp_pilha *deck){
     push(deck, soco);
     push(deck, soco);
     push(deck, soco);
+
 
     chute=criarcarta("Chute",5,0,1,0,0);
     push(deck, chute);
@@ -36,6 +40,7 @@ void criar_deck(tp_pilha *deck){
 
     finalflash=criarcarta("Resplandor final", 15,0,1,0,0);
     push(deck, finalflash);
+
     }
 
 void cartas_especiais(int numero, tp_pilha *deck){
@@ -53,26 +58,31 @@ void cartas_especiais(int numero, tp_pilha *deck){
     {
     case 1:
     push(deck, supersayajin);
+    printf("Nova habilidade desbloqueada!!!\n\n");
     exibirCarta(&supersayajin);
       break;
 
     case 2:
     push(deck, Tiro);
+    printf("Nova habilidade desbloqueada!!!\n\n");
     exibirCarta(&Tiro);
       break;
 
     case 3:
     push(deck, Controlada);
+    printf("Nova habilidade desbloqueada!!!\n\n");
     exibirCarta(&Controlada);
       break;
 
     case 4:
       push(deck, regeneracao);
+      printf("Nova habilidade desbloqueada!!!\n\n");
       exibirCarta(&regeneracao);
       break;
 
     case 5:
       push(deck, Gigante);
+      printf("Nova habilidade desbloqueada!!!\n\n");
       exibirCarta(&Gigante);
       break;
     
