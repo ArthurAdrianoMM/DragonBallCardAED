@@ -2,7 +2,7 @@
 #define FILA_H
 #include "pilhastruct.h"
 
-#define MAX_SIZE 6
+#define MAX_SIZE 10
 
 typedef struct{
 	char nome[20];
