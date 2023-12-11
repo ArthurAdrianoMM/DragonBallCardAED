@@ -33,7 +33,6 @@ void definir_personagem(personagem *j){
         case 1: 
             strcpy(raca, "Sayajin");
             printf("\"Sayajins sao combatentes natos!! Possuem aparencia humana com cabelos pretos e capacidade de se transformar para aumentar seu poder.\"\n");
-            printf("Habilidade: transformacoes duram ate o final do combate\n");
             printf("Vida:80   Ki:4   Gold:80\n");
             printf("Deseja continuar? digite \"1\" para sim e qualquer outro valor para voltar\n");
             scanf(" %d", &continuar);
@@ -42,7 +41,6 @@ void definir_personagem(personagem *j){
         case 2:
             strcpy(raca, "Humano");
             printf("\"Humanos sao uma raca comum e diversificada que habita varios planetas, eles nao possuem habilidades especiais como outras racas, mas sao notaveis por sua tenacidade, inteligencia e espirito de luta\"\n");
-            printf("Habilidade: recebe mais 2 tecnicas novas a cada combate.\n");
             printf("Vida:100   Ki:3   Gold:100\n");
             printf("Deseja continuar? digite \"1\" para sim e qualquer outro valor para voltar\n");
             scanf(" %d", &continuar);
@@ -51,7 +49,6 @@ void definir_personagem(personagem *j){
             strcpy(raca, "Arcosiano");
             printf("\"os Arcosianos, tambem conhecidos como Frost Demons, sao uma raca alienigena extremamente poderosa. Possuem forma humanoide com pele colorida, tendem a ser crueis\"\n");
             printf("Vida:75   Ki:3   Gold:80\n");
-            printf("Habilidade: 10%% de chance de desviar do golpe.\n");
             printf("Deseja continuar? digite \"1\" para sim e qualquer outro valor para voltar\n");
             scanf(" %d", &continuar);
             break;
@@ -59,7 +56,6 @@ void definir_personagem(personagem *j){
             strcpy(raca, "Majin");
             printf("\"Os Majins sao uma raca de seres magicos tem habilidades regenerativas e a capacidade de absorver e transformar outros seres, ganhando suas habilidades.\"\n");
             printf("Vida:90   Ki:3   Gold:120\n");
-            printf("Habilidade: Absorve inimigos derrotados e rouba suas tecnicas.\n");
             printf("Deseja continuar? digite \"1\" para sim e qualquer outro valor para voltar\n");
             scanf(" %d", &continuar);
             break;
@@ -67,7 +63,6 @@ void definir_personagem(personagem *j){
             strcpy(raca, "Namekuseijin");
             printf("\"Os Namekuseijins sao uma raca alienigena, originaria do planeta Namek. Possuem aparencia humanoide com pele verde, antenas na cabeca e habilidades unicas de regeneracao se curarando rapidamente.\"\n");
             printf("Vida:110   Ki:3   Gold:100\n");
-            printf("Habilidade: cura 10 de vida ao final do combate");
             printf("Deseja continuar? digite \"1\" para sim e qualquer outro valor para voltar\n");
             scanf(" %d", &continuar);
             break;

@@ -41,7 +41,7 @@ Monstro BancoDeDados(int ID) {
 	Monstro monstro;
     switch (ID) {
         case 1:
-            monstro = CriarMonstro("Saibaman", 20); 
+            monstro = CriarMonstro("Saibaman", 20);
             CriarAcao(&monstro, "Golpe", 3); 
             CriarAcao(&monstro, "Golpe", 3);
             CriarAcao(&monstro, "Rajada de ki",4);

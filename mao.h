@@ -182,7 +182,7 @@ void adicionar_carta(Mao **mao, tp_pilha *deck, int Qnt) { // Mao, o deck, e a q
     }              
 }
 
-void joga_carta(Mao **lista, int posicao, tp_pilha *descarte, Monstro *monstro, personagem *personagem) {
+void joga_carta(Mao **lista, int posicao, tp_pilha *descarte, Monstro *monstro, personagem *personagem, FILE **arqv) {
     // atu aponta pra carta na posição q passo como parametro
     // para acessar a carta usa-se atu->info
     int contador = 0;
@@ -195,6 +195,7 @@ void joga_carta(Mao **lista, int posicao, tp_pilha *descarte, Monstro *monstro, 
 
     if (atu != NULL) {
         Carta carta = atu->info; // faz uma "copia" da carta
+        fprintf(*arqv, "%s\n", carta.nome);
         if(carta.energia<=personagem->ki){
             printf("%s \n", carta.nome);
             monstro->vida-=carta.ataque;
@@ -226,7 +227,6 @@ void descartar(Mao **lista, tp_pilha *descarte, int posicao) {
 
         Carta carta = atu->info; // faz uma "copia" da carta
         
-        printf("%s \n", carta.nome);
         push(descarte,carta); // joga a carta no descarte
         remove_elemento_posicao(lista, contador); // tira a carta da mao
         

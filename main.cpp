@@ -117,7 +117,7 @@ int main() {
                         printf("Fim de turno \n");
                         turno=0; // finaliza o round
                     }else{
-                        joga_carta(&mao, escolha, &descarte, &inimigo, &jogador);
+                        joga_carta(&mao, escolha, &descarte, &inimigo, &jogador, &arq);
                     }
                 }
 
@@ -144,7 +144,7 @@ int main() {
                 }
                 empilha_pilha(&deck, &descarte);
                 embaralhar_pilha(&deck);
-                jogador.gold=+100;
+                jogador.gold+=110;
                 printf("GANHOU , parabens por ter derrotado o inimigo \n");
                 system("pause");
                 system("cls");
@@ -153,7 +153,6 @@ int main() {
                 system("pause");
                 return 0;
             }
-            printf("%d", jogador.gold);
 
             system("pause");
             system("cls"); 

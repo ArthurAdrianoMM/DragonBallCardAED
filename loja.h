@@ -26,22 +26,22 @@ Carta banco_carta(int numero){
     switch (numero)
     {
     case 1:
-        carta = criarcarta("Kamehameha avancado", 30,0,2,0,0);
+        carta = criarcarta("Kamehameha avancado", 30,0,2,0);
         break;
     case 2:
-        carta = criarcarta("Mega-barreira", 0,15,1,0,0);
+        carta = criarcarta("Mega-barreira", 0,15,1,0);
         break;
     case 3:
-        carta = criarcarta("Ataque de furia",8,0,0,0,0);
+        carta = criarcarta("Ataque de furia",8,0,0,0);
         break;
     case 4:
-        carta = criarcarta("Refelexo Instintivo",0,8,0,0,0);
+        carta = criarcarta("Refelexo Instintivo",0,8,0,0);
         break;
     case 5:
-        carta = criarcarta("Big-Bang Ataque",18,0,1,0,0);
+        carta = criarcarta("Big-Bang Ataque",18,0,1,0);
         break;
     case 6:
-        carta = criarcarta("Masenko ", 18, 0,1,0,0);
+        carta = criarcarta("Masenko ", 18, 0,1,0);
         break;
     
     default:
@@ -93,8 +93,8 @@ int comprar_na_loja(int* vida, int* gold, tp_pilha *deckj) {
                 comprapocao70(vida, gold);
                 break;
             case 3: {
-                if(*gold>450){
-                    *gold -= 450;
+                if(*gold>100){
+                    *gold -= 100;
                 pacotinho(deckj);
                 }
                 else printf("Gold insuficiente para comprar este item!\n");
