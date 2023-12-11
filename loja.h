@@ -114,5 +114,44 @@ int comprar_na_loja(int* vida, int* gold, tp_pilha *deckj) {
     return 1;
 } 
 
+void descanso(tp_pilha *deckaux, int *vida, int nm){
+    int escolha, confirm;
+    printf("Voce encontrou um cabana com um homem de cabelo grisalho deseja falar com ele(digite 1) ou descansar em outro lugar(outro)?\n");
+    scanf("%d", &escolha);
+
+    if(escolha==1){
+        printf("Ola jovem viajente me chamo Marcio Kame, e vejo que voce tem um pontencial a ser libertado gostaria que libere para voce?\n");
+        printf("Digite 1 para confirmar\n");
+        scanf("%d", &confirm);
+        if(confirm==1){ 
+            cartas_especiais(nm, deckaux);
+            }
+        *vida +=25;
+    }
+    else{
+        printf("Voce se afasta e decide descancar em outro lugar\n");
+        switch (nm)
+        {
+        case 1:
+            *vida=80;
+            break;
+        case 2:
+            *vida=100;
+            break;
+        case 3:
+            *vida=90;
+            break;
+        case 4:
+            *vida=100;
+            break;
+        case 5:
+            *vida= 120;
+            break;
+        default:
+            break;
+        }
+    }
+    }
+
 
 #endif

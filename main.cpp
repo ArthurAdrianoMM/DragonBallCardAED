@@ -1,9 +1,30 @@
 #include "loja.h"
 
+int menu(){
+    int escolha=0;
+    while(escolha!=1){
+        printf("               SLAYER Z                \n");
+        printf("       1 - Jogar       \n");
+        printf("       2 - Creditos    \n");
+        printf("       3 - Sair        \n");
+        printf("\n");
+        scanf("%d", escolha);
+        if(escolha == 2){
+            printf("Arthur Adriano");
+            printf("Joao Maia");
+            printf("Carlos");
+            printf("Enzo");
+            printf("Bob");
+        }else if(escolha == 3){
 
+        }
+    }
+    
+    return 0;
+}
 
 int main() { 
-    
+
     personagem jogador;
     definir_personagem(&jogador);
     DadosPersonagem(&jogador);
@@ -27,14 +48,16 @@ int main() {
 
     registra(&arq, cont, nome_arq);//salva o nivel alcançado pelo jogador
 
-    //Monstro inimigo = BancoBoss((rand() % 3) + 1); // na biblioteca monstro há varios monstros, para lutar contra outro basta mudar o ID
-    Monstro inimigo = BancoBoss((rand() % 3) + 1);
+    Monstro inimigo ;
 
     int escolha, turno, i=0 ; int fase=-1; // i e apenas um contador para as acoes do monstro
 
+
     while(fase!=11){
+
                 fase=navega_mapa(&mapa);
                 verificaFase(fase);   
+                Sleep(1000);
             
     switch (fase)
     {
@@ -84,7 +107,6 @@ int main() {
                         joga_carta(&mao, escolha, &descarte, &inimigo, &jogador);
                     }
                 }
-                if(inimigo.vida<=0) break;;
 
                 system("cls"); // se estiver no windows
 
@@ -92,6 +114,11 @@ int main() {
                 printf("%s  vida: %d \n\n",inimigo.nome,inimigo.vida);
                 printf("     %s, usou    %s    %d de dano\n\n\n",inimigo.nome, inimigo.acoes.items[i].nome, inimigo.acoes.items[i].dano);
                 system("pause");// se estiver no windows
+
+                if(inimigo.vida<=0){
+                    printf("adsiaj"); 
+                    break;
+                } 
 
                 if(inimigo.acoes.items[i].dano<jogador.def){ // caso a defesa do personagem seja maior que o dano do ataque
                     jogador.def-=inimigo.acoes.items[i].dano;
@@ -103,11 +130,12 @@ int main() {
                 
                 i++ ; if(i>(inimigo.acoes.fim)) i=0;   // caso o contador i seja maior que o numero de acoes
 
-                if(inimigo.vida<=0 && jogador.vida<=0){
+                if(inimigo.vida<=0 || jogador.vida<=0){
                     while(!mao_vazia(mao)){
-                    descartar(&mao, &deck, 0);
+                    descartar(&mao, &deck, 0); 
                     }
                     empilha_pilha(&deck, &descarte);
+                    jogador.gold=+100;
                 }
             }
 
