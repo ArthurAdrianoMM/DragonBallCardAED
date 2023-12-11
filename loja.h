@@ -4,58 +4,57 @@
 
 
 void comprapocao50(int* vida, int* gold){
-    if(*gold >= 150){
+    if(*gold >= 50){
         *vida += 50;
-        *gold -= 150;
+        *gold -= 50;
         printf("Compra realizada com sucesso!\n");
         }
     else printf("Gold insuficiente para comprar este item!\n");
-    
 }
+
 void comprapocao70(int* vida, int* gold){
-    if(*gold >= 300){
+    if(*gold >= 70){
           *vida += 70;
-        *gold -= 300;
+        *gold -= 70;
         printf("Compra realizada com sucesso!\n");
     }
     else printf("Gold insuficiente para comprar este item!\n");
 }
 
 Carta banco_carta(int numero){
-    Carta abobrinha;
+    Carta carta;
     switch (numero)
     {
     case 1:
-        abobrinha = criarcarta("Kamehameha avancado", 30,0,2,0,0);
+        carta = criarcarta("Kamehameha avancado", 30,0,2,0,0);
         break;
     case 2:
-        abobrinha = criarcarta("Mega-barreira", 0,15,1,0,0);
+        carta = criarcarta("Mega-barreira", 0,15,1,0,0);
         break;
     case 3:
-        abobrinha = criarcarta("Ataque de furia",8,0,0,0,0);
+        carta = criarcarta("Ataque de furia",8,0,0,0,0);
         break;
     case 4:
-        abobrinha = criarcarta("Refelexo Instintivo",0,8,0,0,0);
+        carta = criarcarta("Refelexo Instintivo",0,8,0,0,0);
         break;
     case 5:
-        abobrinha = criarcarta("Big-Bang Ataque",18,0,1,0,0);
+        carta = criarcarta("Big-Bang Ataque",18,0,1,0,0);
         break;
     case 6:
-        abobrinha = criarcarta("Masenko ", 18, 0,1,0,0);
+        carta = criarcarta("Masenko ", 18, 0,1,0,0);
         break;
     
     default:
-    printf("abobrinha!!!!! hahahahahahahahha\n");
+    printf("Erro\n");
         break;
     }
     
-return abobrinha;
+return carta;
     
 }
 
 void pacotinho(tp_pilha *deck) {
     Carta carta[2];
-    int nd;
     srand(time(NULL));
 
     for(int i=0; i<2; i++){
@@ -73,12 +72,11 @@ void pacotinho(tp_pilha *deck) {
 void mostrar_menu(){
     printf("Bem vindo a loja!\n");
     printf("Escolha uma opcao para comprar:\n");
-    printf("1. Pocao de cura 50 de vida - 150 de ouro\n");
-    printf("2. Pocao de cura 70 de vida - 250 de ouro\n");
-    printf("3. Pacote de 2 cartas - 450 de ouro\n");
+    printf("1. Pocao de cura 50 de vida - 50 de ouro\n");
+    printf("2. Pocao de cura 70 de vida - 70 de ouro\n");
+    printf("3. Pacote de 2 cartas - 100 de ouro\n");
     printf("voce ira receber 2 cartas aleatorias que serao implementadas a sua mao\n");
     printf("4. sair\n");
-    
 }
 
 int comprar_na_loja(int* vida, int* gold, tp_pilha *deckj) {

@@ -1,22 +1,29 @@
 #include "loja.h"
 
 int menu(){
+
     int escolha=0;
     while(escolha!=1){
+        system("cls");
         printf("               SLAYER Z                \n");
         printf("       1 - Jogar       \n");
         printf("       2 - Creditos    \n");
         printf("       3 - Sair        \n");
         printf("\n");
-        scanf("%d", escolha);
+        scanf("%d", &escolha);
         if(escolha == 2){
-            printf("Arthur Adriano");
-            printf("Joao Maia");
-            printf("Carlos");
-            printf("Enzo");
-            printf("Bob");
+            system("cls");
+            printf("         Arthur Adriano\n");
+            printf("         Joao Maia\n");
+            printf("         Carlos\n");
+            printf("         Enzo\n");
+            printf("         Bob\n");
+            system("pause");
         }else if(escolha == 3){
-
+            exit(escolha);
+        }else if(escolha != 1){
+            system("cls");
+            printf("escolha invalida\n");
         }
     }
     
@@ -25,22 +32,26 @@ int menu(){
 
 int main() { 
 
+    menu();
+
     personagem jogador;
     definir_personagem(&jogador);
     DadosPersonagem(&jogador);
+
     system("pause");
     system("cls");
 
-    tp_pilha descarte;
-    tp_pilha deck;
-    tp_nodo mapa;
-    Mao *mao = inicializa_mao();
-
-    prepara_mapa(&mapa);
-    inicializa_pilha(&descarte); // para depois printar o descarte, basta adicionar depois da luta imprime_pilha(&descarte);
+    tp_pilha descarte, deck;
     inicializa_pilha(&deck);
     criar_deck(&deck);
     embaralhar_pilha(&deck);
+
+    inicializa_pilha(&descarte); 
+
+    tp_nodo mapa;
+    prepara_mapa(&mapa);
+
+    Mao *mao = inicializa_mao();
 
     FILE *arq;
     char nome_arq[20];
@@ -48,16 +59,17 @@ int main() {
 
     registra(&arq, cont, nome_arq);//salva o nivel alcançado pelo jogador
 
-    Monstro inimigo ;
+    Monstro inimigo;
 
-    int escolha, turno, i=0 ; int fase=-1; // i e apenas um contador para as acoes do monstro
+    int escolha, turno, i=0 ; 
+    int fase=-1; // i e apenas um contador para as acoes do monstro
 
 
     while(fase!=11){
 
-                fase=navega_mapa(&mapa);
-                verificaFase(fase);   
-                Sleep(1000);
+        fase=navega_mapa(&mapa);
+        verificaFase(fase);   
+        Sleep(1000);
             
     switch (fase)
     {
@@ -89,6 +101,7 @@ int main() {
 
                 if(altura_pilha(&deck) <= 4){
                     empilha_pilha(&deck, &descarte);
+                    embaralhar_pilha(&deck);
                     adicionar_carta(&mao, &deck, 5);
                 }else{
                     adicionar_carta(&mao, &deck, 5);
@@ -115,11 +128,6 @@ int main() {
                 printf("     %s, usou    %s    %d de dano\n\n\n",inimigo.nome, inimigo.acoes.items[i].nome, inimigo.acoes.items[i].dano);
                 system("pause");// se estiver no windows
 
-                if(inimigo.vida<=0){
-                    printf("adsiaj"); 
-                    break;
-                } 
-
                 if(inimigo.acoes.items[i].dano<jogador.def){ // caso a defesa do personagem seja maior que o dano do ataque
                     jogador.def-=inimigo.acoes.items[i].dano;
                 }else{
@@ -129,28 +137,26 @@ int main() {
                 if(jogador.def < 0) jogador.def = 0; // caso a defesa seja negativa, reseta para 0
                 
                 i++ ; if(i>(inimigo.acoes.fim)) i=0;   // caso o contador i seja maior que o numero de acoes
-
-                if(inimigo.vida<=0 || jogador.vida<=0){
-                    while(!mao_vazia(mao)){
+            }
+            if(jogador.vida>=0){
+                while(!mao_vazia(mao)){
                     descartar(&mao, &deck, 0); 
-                    }
-                    empilha_pilha(&deck, &descarte);
-                    jogador.gold=+100;
                 }
-            }
-
-            system("cls"); // se estiver no windows
-
-            
-            if(jogador.vida<0){
-                printf("muito ruim, perdeu \n");
+                empilha_pilha(&deck, &descarte);
+                embaralhar_pilha(&deck);
+                jogador.gold=+100;
+                printf("GANHOU , parabens por ter derrotado o inimigo \n");
                 system("pause");
+                system("cls");
             }else{
-                printf(" GANHOU , parabens por ter derrotado o inimigo \n");
+                printf("PERDEU , muito ruim\n");
                 system("pause");
-                system("cls"); // se estiver no windows
-                
+                return 0;
             }
+            printf("%d", jogador.gold);
+
+            system("pause");
+            system("cls"); 
 
         fprintf(arq, "fase = %d\n", nivel);
         nivel++; //contador de fases que percorre

@@ -41,14 +41,14 @@ Monstro BancoDeDados(int ID) {
 	Monstro monstro;
     switch (ID) {
         case 1:
-            monstro = CriarMonstro("Saibaman", 1); //20
+            monstro = CriarMonstro("Saibaman", 20); 
             CriarAcao(&monstro, "Golpe", 3); 
             CriarAcao(&monstro, "Golpe", 3);
             CriarAcao(&monstro, "Rajada de ki",4);
             CriarAcao(&monstro, "Auto-explosao", 20);
 			break;
         case 2:
-            monstro = CriarMonstro("Nappa", 1); // 60 
+            monstro = CriarMonstro("Nappa", 60); 
             CriarAcao(&monstro, "Soco desvastador", 4); 
             CriarAcao(&monstro, "Soco desvastador", 4); 
             CriarAcao(&monstro, "Bafo de Ki", 10);
@@ -57,7 +57,7 @@ Monstro BancoDeDados(int ID) {
             CriarAcao(&monstro, "Explosao", 13);
             break;
         case 3:
-            monstro = CriarMonstro("Zarbon", 1);  // 80
+            monstro = CriarMonstro("Zarbon", 80);  
             CriarAcao(&monstro, "Golpe elegante", 5); 
             CriarAcao(&monstro, "Golpe elegante", 5); 
             CriarAcao(&monstro, "Golpe elegante", 5); 
@@ -66,7 +66,7 @@ Monstro BancoDeDados(int ID) {
             CriarAcao(&monstro, "Multiplos chutes", 10);
             break;
         case 4:
-        monstro = CriarMonstro("Recoome", 1); //100
+        monstro = CriarMonstro("Recoome", 100);
             CriarAcao(&monstro, "Chute Recoome", 5);
             CriarAcao(&monstro, "Chute Recoome", 5);
             CriarAcao(&monstro, "Mega-soco", 12);
@@ -75,7 +75,7 @@ Monstro BancoDeDados(int ID) {
              
             break;
         case 5:
-            monstro = CriarMonstro("Androide 16", 1); //100
+            monstro = CriarMonstro("Androide 16", 100); 
             CriarAcao(&monstro, "Golpe", 7); 
             CriarAcao(&monstro, "Golpe", 7);
             CriarAcao(&monstro, "Soco voador", 12);
@@ -84,14 +84,14 @@ Monstro BancoDeDados(int ID) {
             CriarAcao(&monstro, "Hell's Flash ", 20);
             break;
         case 6://aprovado
-            monstro = CriarMonstro("Burter", 1); //100
+            monstro = CriarMonstro("Burter", 100); 
             CriarAcao(&monstro, "Chute Veloz", 5); 
             CriarAcao(&monstro, "Contra-golpe veloz", 5); 
             CriarAcao(&monstro, "Soco Veloz", 5); 
             CriarAcao(&monstro, "Furacao azul", 13);
             break;
         case 7://
-            monstro = CriarMonstro("Jeice", 1); //100
+            monstro = CriarMonstro("Jeice", 100); 
             CriarAcao(&monstro, "Soco", 5);
             CriarAcao(&monstro, "Chute", 5);
             CriarAcao(&monstro, "Rajada de soco", 7);
@@ -100,7 +100,7 @@ Monstro BancoDeDados(int ID) {
             CriarAcao(&monstro, "Raio vermelho destruidor", 14);
             break;
         case 8:
-            monstro = CriarMonstro("Capitao Ginyu", 1); //100
+            monstro = CriarMonstro("Capitao Ginyu", 100);
             CriarAcao(&monstro, "Galaxy Dynamite", 6);
             CriarAcao(&monstro, "Galaxy Dynamite", 6);
             CriarAcao(&monstro, "Galaxy Dynamite", 6);
@@ -109,14 +109,14 @@ Monstro BancoDeDados(int ID) {
             CriarAcao(&monstro, "Ginyu Smash", 9);
             break;
         case 9:
-            monstro = CriarMonstro("Guldo", 1); //70
+            monstro = CriarMonstro("Guldo", 70); 
             CriarAcao(&monstro, "Soco com Tempo parado", 4);
             CriarAcao(&monstro, "Soco com Tempo parado", 4);
             CriarAcao(&monstro, "Soco com Tempo parado", 4);
             CriarAcao(&monstro, "Estacas da morte", 10);
             break;
         case 10:
-            monstro = CriarMonstro("Cell.jr", 1); //80
+            monstro = CriarMonstro("Cell.jr", 80);
             CriarAcao(&monstro, "Golpe", 4);
             CriarAcao(&monstro, "Golpe", 4);
             CriarAcao(&monstro, " Kiko-ho", 10);
