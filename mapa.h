@@ -1,5 +1,5 @@
-#ifndef MAPA
-#define MAPA
+#ifndef mapa_h
+#define mapa_h
 
 #include <stdio.h>
 #include <stdlib.h>

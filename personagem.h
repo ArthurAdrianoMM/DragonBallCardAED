@@ -7,7 +7,7 @@
 #include<stdlib.h>
 #include <locale.h>
 #include <string.h>
-#include "MAPA.h"
+#include "mapa.h"
 
 using namespace std;
 
