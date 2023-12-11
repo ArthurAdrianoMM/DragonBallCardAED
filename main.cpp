@@ -65,13 +65,14 @@ int main() {
 
     registra(&arq, cont, nome_arq);//salva o nivel alcançado pelo jogador
 
-    Monstro inimigo = BancoBoss((rand() % 3) + 1); // na biblioteca monstro há varios monstros, para lutar contra outro basta mudar o ID
+    Monstro inimigo; // na biblioteca monstro há varios monstros, para lutar contra outro basta mudar o ID
 
     int escolha, turno, i=0 ; int fase=-1; // i e apenas um contador para as acoes do monstro
 
 while(fase!=11){
             fase=navega_mapa(&mapa);
-            verificaFase(fase);   
+            verificaFase(fase);  
+            Sleep(1000); 
         
 switch (fase)
 {
@@ -80,13 +81,19 @@ switch (fase)
     break;
 
     case 1:
-    //funcao loja;
+    comprar_na_loja(&jogador.vida, &jogador.gold, &deck);
+    break;
+
+    case 10:
+    inimigo = BancoBoss((rand() % 3) + 1);
     break;
 
 default: 
-    
+    inimigo = BancoDeDados((rand() % 10) + 1);
+    break;
+}
 
-    while(inimigo.vida>0 && jogador.vida>0){    // enquanto algum dois estiverem vivos
+while(inimigo.vida>0 && jogador.vida>0){    // enquanto algum dois estiverem vivos
         jogador.ki=jogador.ki_maximo; // reseta o ki do personagem a cada fim de round
         turno=1; 
         
@@ -138,8 +145,7 @@ default:
         system("cls"); // se estiver no windows
         
     }
-    break;
-}
+
 fprintf(arq, "fase = %d\n", nivel);
 nivel++; //contador de fases que percorre
 }
