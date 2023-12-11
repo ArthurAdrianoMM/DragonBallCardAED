@@ -174,11 +174,11 @@ int escolher_carta(Mao *lista) {
 }
 
 // Função para adicionar uma carta à mão do jogador
-void adicionar_carta(Mao *mao, tp_pilha *deck, int Qnt) { // Mao, o deck, e a quantidade de cartas a cavar
+void adicionar_carta(Mao **mao, tp_pilha *deck, int Qnt) { // Mao, o deck, e a quantidade de cartas a cavar
     Carta Carta;
     for(int i=0; i<Qnt; i++){
         pop(deck, &Carta); // retira a carta do topo do deck 
-        mao_insere_no_fim(&mao, Carta); // joga no final da mao
+        mao_insere_no_fim(mao, Carta); // joga no final da mao
     }              
 }
 
@@ -208,6 +208,32 @@ void joga_carta(Mao **lista, int posicao, tp_pilha *descarte, Monstro *monstro, 
         }
     }
 }
+
+void descartar(Mao **lista, tp_pilha *descarte, int posicao) {
+    // atu aponta pra carta na posição q passo como parametro
+    // para acessar a carta usa-se atu->info
+    
+    int contador = 0;
+    Mao *atu ;
+    atu = *lista;
+
+    while (atu != NULL && contador < posicao) { // loop para igualar contador a posicao, assim fazendo atu apontar pra posição que quer
+        atu = atu->prox;
+        contador++;
+    }
+
+    if (atu != NULL) {
+
+        Carta carta = atu->info; // faz uma "copia" da carta
+        
+        printf("%s \n", carta.nome);
+        push(descarte,carta); // joga a carta no descarte
+        remove_elemento_posicao(lista, contador); // tira a carta da mao
+        
+    }
+}
+
+
 
 
 
