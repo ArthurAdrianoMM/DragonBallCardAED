@@ -54,13 +54,20 @@ return abobrinha;
 }
 
 void pacotinho(tp_pilha *deck) {
-    Carta carta[3];
+    Carta carta[2];
+    int nd;
+    srand(time(NULL));
 
-    for(int i=0; i<3; i++){
-     carta[i] = banco_carta((rand() % 6 ) + 1 );
+    for(int i=0; i<2; i++){
+     carta[i] = banco_carta((rand() % 6 ) + 1);
      push(deck, carta[i]);
     }
+    printf("As cartas recibidas no pacote foram:\ncarta 1:\n");
     
+    exibirCarta(&carta[0]);
+    printf("\n");
+    exibirCarta(&carta[1]);
+    system("pause");
 }
 
 void mostrar_menu(){
@@ -68,16 +75,17 @@ void mostrar_menu(){
     printf("Escolha uma opcao para comprar:\n");
     printf("1. Pocao de cura 50 de vida - 150 de ouro\n");
     printf("2. Pocao de cura 70 de vida - 250 de ouro\n");
-    printf("3. Pacote de 3 cartas - 450 de ouro\n");
-    printf("voce ira receber 3 cartas aleatorias que serao implementadas a sua mao\n");
+    printf("3. Pacote de 2 cartas - 450 de ouro\n");
+    printf("voce ira receber 2 cartas aleatorias que serao implementadas a sua mao\n");
     printf("4. sair\n");
     
 }
 
 int comprar_na_loja(int* vida, int* gold, tp_pilha *deckj) {
     int escolha = 0;
+    
     while (escolha != 4) {
-
+        mostrar_menu();
         scanf("%d", &escolha);
         switch (escolha) {
             case 1:
@@ -99,10 +107,10 @@ int comprar_na_loja(int* vida, int* gold, tp_pilha *deckj) {
             default:
                 printf("Opcao Invalida!\n");
                 break;
-        }
-        
-    }
-    system("cls");
+        } 
+        Sleep(2000);
+         system("cls"); 
+    } 
     return 1;
 } 
 
